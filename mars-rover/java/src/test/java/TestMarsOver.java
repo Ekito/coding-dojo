@@ -18,11 +18,7 @@ public class TestMarsOver {
     public void testInitialPosition() {
         MarsRover rover = new MarsRover();
 
-        Position position = rover.getPosition();
-
-        assertThat(position.getX()).isEqualTo(0);
-        assertThat(position.getY()).isEqualTo(0);
-        assertThat(position.getOrientation()).isEqualTo(NORTH);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(0,0,NORTH));
     }
 
    @Test
@@ -31,9 +27,7 @@ public class TestMarsOver {
 
         Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(0);
-        assertThat(position.getY()).isEqualTo(0);
-        assertThat(position.getOrientation()).isEqualTo(SOUTH);
+        assertThat(position).isEqualToComparingFieldByField(new Position(0,0,SOUTH));
     }
 
     @Test
@@ -41,11 +35,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover();
 
         rover.move('f');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(0);
-        assertThat(position.getY()).isEqualTo(1);
-        assertThat(position.getOrientation()).isEqualTo(NORTH);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(0, 1, NORTH));
     }
 
     @Test
@@ -53,11 +44,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(0,1,SOUTH);
 
         rover.move('f');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(0);
-        assertThat(position.getY()).isEqualTo(0);
-        assertThat(position.getOrientation()).isEqualTo(SOUTH);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(0, 0, SOUTH));
     }
 
 
@@ -66,11 +54,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(22,22,WEST);
 
         rover.move('f');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(21);
-        assertThat(position.getY()).isEqualTo(22);
-        assertThat(position.getOrientation()).isEqualTo(WEST);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(21, 22, WEST));
     }
 
     @Test
@@ -78,11 +63,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover();
 
         rover.move('r');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(0);
-        assertThat(position.getY()).isEqualTo(0);
-        assertThat(position.getOrientation()).isEqualTo(EAST);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(0, 0, EAST));
     }
 
     @Test
@@ -90,11 +72,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(0,0,SOUTH);
 
         rover.move('r');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(0);
-        assertThat(position.getY()).isEqualTo(0);
-        assertThat(position.getOrientation()).isEqualTo(WEST);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(0, 0, WEST));
     }
 
     @Test
@@ -102,11 +81,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(5,5,SOUTH);
 
         rover.move('r');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(5);
-        assertThat(position.getY()).isEqualTo(5);
-        assertThat(position.getOrientation()).isEqualTo(WEST);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(5, 5, WEST));
     }
 
     @Test
@@ -114,11 +90,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(5,5, WEST);
 
         rover.move('r');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(5);
-        assertThat(position.getY()).isEqualTo(5);
-        assertThat(position.getOrientation()).isEqualTo(NORTH);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(5, 5, NORTH));
     }
 
     @Test
@@ -126,11 +99,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(5,5, NORTH);
 
         rover.move('l');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(5);
-        assertThat(position.getY()).isEqualTo(5);
-        assertThat(position.getOrientation()).isEqualTo(WEST);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(5, 5, WEST));
     }
 
     @Test
@@ -138,11 +108,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover();
 
         rover.move('b');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(0);
-        assertThat(position.getY()).isEqualTo(-1);
-        assertThat(position.getOrientation()).isEqualTo(NORTH);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(0, -1, NORTH));
     }
 
     @Test
@@ -150,11 +117,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(23,23,WEST);
 
         rover.move('b');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(24);
-        assertThat(position.getY()).isEqualTo(23);
-        assertThat(position.getOrientation()).isEqualTo(WEST);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(24, 23, WEST));
     }
 
     @Test
@@ -162,9 +126,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(23,23,WEST);
 
         rover.move('b', 'b');
-        Position position = rover.getPosition();
 
-        assertThat(position).isEqualToComparingFieldByField(new Position(25,23, WEST));
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(25,23, WEST));
     }
 
     @Test(expected = IllegalStateException.class)
@@ -204,11 +167,9 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(25,25,EAST);
 
         rover.move('f');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(0);
-        assertThat(position.getY()).isEqualTo(25);
-        assertThat(position.getOrientation()).isEqualTo(EAST);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(0, 25, EAST));
+
     }
 
     @Test
@@ -216,11 +177,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(0,0,WEST);
 
         rover.move('f');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(25);
-        assertThat(position.getY()).isEqualTo(0);
-        assertThat(position.getOrientation()).isEqualTo(WEST);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(25, 0, WEST));
     }
 
     @Test
@@ -228,11 +186,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(25,25, NORTH);
 
         rover.move('f');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(25);
-        assertThat(position.getY()).isEqualTo(0);
-        assertThat(position.getOrientation()).isEqualTo(NORTH);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(25, 0, NORTH));
     }
 
     @Test
@@ -240,11 +195,8 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(0, 0, SOUTH);
 
         rover.move('f');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(0);
-        assertThat(position.getY()).isEqualTo(25);
-        assertThat(position.getOrientation()).isEqualTo(SOUTH);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(0, 25, SOUTH));
     }
 
     @Test
@@ -253,10 +205,7 @@ public class TestMarsOver {
         MarsRover rover = new MarsRover(25,25,EAST, mars);
 
         rover.move('f');
-        Position position = rover.getPosition();
 
-        assertThat(position.getX()).isEqualTo(26);
-        assertThat(position.getY()).isEqualTo(25);
-        assertThat(position.getOrientation()).isEqualTo(EAST);
+        assertThat(rover.getPosition()).isEqualToComparingFieldByField(new Position(26, 25, EAST));
     }
 }
